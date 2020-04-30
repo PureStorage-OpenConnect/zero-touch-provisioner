@@ -1,0 +1,8 @@
+{
+    "id": "zero-touch-provisioner",
+    "name": "Zero Touch Provisioner"
+    "filter": "devops",
+    "image": "http://code.purestorage.com/images/34_ZTP.png",
+    "featured": 1,
+    "priority": 1
+}
