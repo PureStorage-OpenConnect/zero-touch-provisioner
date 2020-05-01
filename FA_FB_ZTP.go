@@ -197,7 +197,7 @@ func initializeFATab() ui.Control {
 		timeZone.Append(v)
 		i++
 	}
-
+	timeZone.SetSelected(133)
 	//first column definition
 	hbox := ui.NewHorizontalBox()
 	hbox.SetPadded(true)
@@ -592,16 +592,18 @@ func initializeFATab() ui.Control {
 			//resp := apiCall("PATCH", "https://pureapisim.azurewebsites.net/api/array-initial-config", "", FAData)
 			//update the initResult field with response.
 			if statusCode == 200 {
-				initResult.SetText("Congratulations!  Your FlashArray is now processing the Zero Touch Initialization.\n\nThis process generally takes 30 minutes to an hour to fully complete.\n\nYou should be able to Connect to https://" + vir0IP.Text() + " shortly.\n\nYou can close this application now.\nThank you for choosing Pure Storage.")
+				initResult.SetText("Congratulations!  Your FlashArray is now processing the Zero Touch Initialization.\n\nThis process generally takes 30 minutes to an hour to fully complete.\n\nYou should be able to Connect to https://" + vir0IP.Text() + " shortly.\n\nYou can close this application now or use the query button to monitor initialization.\nThank you for choosing Pure Storage.")
 			} else {
 				//convert int to str
 				statusCodeStr := strconv.Itoa(statusCode)
 				initResult.SetText("Error! \n\nStatus Code: \n" + statusCodeStr + "\n\nResponse:\n" + string(resp))
+				//re-enable the button
+				button2.Enable()
 			}
-
+		} else {
+			//re-enable the button
+			button2.Enable()
 		}
-		//re-enable the button
-		button2.Enable()
 	})
 
 	return hbox
@@ -770,6 +772,7 @@ func initializeFBTab() ui.Control {
 		timeZone.Append(v)
 		i++
 	}
+	timeZone.SetSelected(133)
 	//define the form
 	arrayGroup := ui.NewGroup("Array Config")
 	arrayGroup.SetMargined(false)
@@ -1918,7 +1921,10 @@ func initializeFBTab() ui.Control {
 	nicPatchButton.OnClicked(func(*ui.Button) {
 		//disable button to prevent multi-clicks while processing
 		nicPatchButton.Disable()
-
+		//show message pop up to user
+		ui.MsgBox(mainwin,
+			"This step takes up to a minute to complete, so please be patient even if the app appears to not be responding.",
+			"You can close this message.")
 		//form validation object instantiation
 		var passed bool = true
 		validate := validator.New()
@@ -2381,7 +2387,6 @@ func initializeFBTab() ui.Control {
 		} else {
 			initResult.SetText("Error: " + string(result))
 		}
-		initResult.SetText(string(result))
 	})
 
 	finalPatchButton.OnClicked(func(*ui.Button) {
