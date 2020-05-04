@@ -28,21 +28,19 @@ When ready to initialize, press the Initialize Array button in Column 3 and view
 
 Select the ZTP Flash Blade Tab.
 
-The ZTP Flash Blade tab is comprised of 3 columns as well.  Column 1 provides the 12 Steps necessary to configure a Flash Blade in order of operation.  Each step contains a button that will display the relevant form and controls for the associated step.  Column 2 is the Form fields and controls to query and apply required configurations relevant to each of the 12 steps.  Column 3 provides the output of each action.
+The ZTP Flash Blade tab is comprised of 3 columns as well.  Column 1 provides the 9 Steps necessary to configure a Flash Blade in order of operation.  Each step contains a button that will display the relevant form and controls for the associated step.  Column 2 is the Form fields and controls to query and apply required configurations relevant to each of the 9 steps.  Column 3 provides the output of each action.
 
-In order to authenticate to a Flash Blade using the ZTP tool, you will need the managment IP address of the Array as well as the api-token for the default pureuser.  To obtain the default api-token you can ssh into the FB and issue the command ```pureadmin list --api-token --expose```
+In order to authenticate to a Flash Blade using the ZTP tool, you will need the DHCP IP of the Flash Blade.
 
 To begin you will can either query the Flash Blade to obtain the API versions and auto generate the API url for the "Array API URL" field or you can manually enter the API url in the "Array API URL" field.  If you manually enter the API URL you must include the version and have the format as http or ```https://<fqdn or ip of array>/api/<api version>```
 
 ![Query the Array builds the API URL with the latest support version](assets/FBQuery.PNG)
 
-Once you have the API url in place you will need to provide the "API Token" that will be used to login to the array and generate the "x-auth-token" that will be used for the remainder of the configuration.
-
-When you have both the API token and the API url in place, clicking the "Create Session" button should result in the API URL and x-auth-token labels in column 3 displaying the resulting values.
+When you have the API url in place, clicking the "Create Session" button should result in the API URL and x-auth-token labels in column 3 displaying the resulting values.  If you do not see a value listed in the x-auth-token label field then the session was not created.
 
 ![Create Session logs into the array using the api-token and gets a session token called x-auth-token](assets/FBCreateSession.PNG)
 
-When the above is successful you are ready to move to Step 2 - Step 12 in succession.
+When the above is successful you are ready to move to Step 2 - Step 9 in succession.
 
 ### Prerequisites
 
@@ -59,6 +57,10 @@ For Linux, (desktop GUI is required) download and launch appropriate ZTP binary,
 ```
 For MacOS, download the appropriate ZTP binary, open terminal, set the binary to executable "chmod +x", execute it and fill out the form.
 ```
+
+## Video Tutorial
+
+[![Video Tutorial](assets/ZTP_HowTo_First_Frame.png)](https://youtu.be/LN13cpuA3Jc)
 
 ## Screen Shots
 
