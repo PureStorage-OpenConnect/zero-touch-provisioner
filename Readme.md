@@ -1,6 +1,6 @@
-# Flash Array and Flash Blade Zero Touch Provisioners
+# FlashArray and FlashBlade Zero Touch Provisioners
 
-Pure Storage Flash Array and Flash Blade Zero Touch Provisioner. This lighweight application allows engineers to remotely initialize a new FA or FB using this cross-platform console application.
+Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lighweight application allows engineers to remotely initialize a new FA or FB using this cross-platform console application.
 
 ## Getting Started
 
@@ -8,31 +8,31 @@ Compiled binaries for Mac, Linux, and Windows are located in the Compiled direct
 
 Download the application binary relevant to your desktop OS and execute it.  Fill out the fields and your off.
 
-The single console application has two tabs: Flash Array and Flash Blade.
+The single console application has two tabs: FlashArray and FlashBlade.
 
-#### Flash Array
+#### FlashArray
 
 ![Blank Tab for Flash Array](assets/FA.PNG)
 
-The ZTP Flash Array tab is comprised of 3 columns.  Columnm 1 is the general configurations sections, Column 2 is the IP Addressing section and Column 3 is the Action and Output section.
+The ZTP FlashArray tab is comprised of 3 columns.  Columnm 1 is the general configurations sections, Column 2 is the IP Addressing section and Column 3 is the Action and Output section.
 
-To begin you will enter the Temp DHCP IP of Flash Array in the "DHCP IP of Array" field in column 3.  You can then Query the Array to make sure you have connectivity.
+To begin you will enter the Temp DHCP IP of FlashArray in the "DHCP IP of Array" field in column 3.  You can then Query the Array to make sure you have connectivity.
 
 Next you will fill out the remainder of the fileds in Column 1 and Column 2 according to the specifics of the Array and environment.
 
 When ready to initialize, press the Initialize Array button in Column 3 and view the results in the output window below. 
 
-#### Flash Blade
+#### FlashBlade
 
 ![Blank FlashBlade Tab](assets/FB.PNG)
 
-Select the ZTP Flash Blade Tab.
+Select the ZTP FlashBlade Tab.
 
-The ZTP Flash Blade tab is comprised of 3 columns as well.  Column 1 provides the 9 Steps necessary to configure a Flash Blade in order of operation.  Each step contains a button that will display the relevant form and controls for the associated step.  Column 2 is the Form fields and controls to query and apply required configurations relevant to each of the 9 steps.  Column 3 provides the output of each action.
+The ZTP FlashBlade tab is comprised of 3 columns as well.  Column 1 provides the 9 Steps necessary to configure a FlashBlade in order of operation.  Each step contains a button that will display the relevant form and controls for the associated step.  Column 2 is the Form fields and controls to query and apply required configurations relevant to each of the 9 steps.  Column 3 provides the output of each action.
 
-In order to authenticate to a Flash Blade using the ZTP tool, you will need the DHCP IP of the Flash Blade.
+In order to authenticate to a Flash Blade using the ZTP tool, you will need the DHCP IP of the FlashBlade.
 
-To begin you will can either query the Flash Blade to obtain the API versions and auto generate the API url for the "Array API URL" field or you can manually enter the API url in the "Array API URL" field.  If you manually enter the API URL you must include the version and have the format as http or ```https://<fqdn or ip of array>/api/<api version>```
+To begin you will can either query the FlashBlade to obtain the API versions and auto generate the API url for the "Array API URL" field or you can manually enter the API url in the "Array API URL" field.  If you manually enter the API URL you must include the version and have the format as http or ```https://<fqdn or ip of array>/api/<api version>```
 
 ![Query the Array builds the API URL with the latest support version](assets/FBQuery.PNG)
 
