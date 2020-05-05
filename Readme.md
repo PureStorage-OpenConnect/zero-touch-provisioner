@@ -12,7 +12,7 @@ The single console application has two tabs: FlashArray and FlashBlade.
 
 #### FlashArray
 
-![Blank Tab for Flash Array](assets/FA.PNG)
+![Blank Tab for FlashArray](assets/FA.PNG)
 
 The ZTP FlashArray tab is comprised of 3 columns.  Columnm 1 is the general configurations sections, Column 2 is the IP Addressing section and Column 3 is the Action and Output section.
 
@@ -30,7 +30,7 @@ Select the ZTP FlashBlade Tab.
 
 The ZTP FlashBlade tab is comprised of 3 columns as well.  Column 1 provides the 9 Steps necessary to configure a FlashBlade in order of operation.  Each step contains a button that will display the relevant form and controls for the associated step.  Column 2 is the Form fields and controls to query and apply required configurations relevant to each of the 9 steps.  Column 3 provides the output of each action.
 
-In order to authenticate to a Flash Blade using the ZTP tool, you will need the DHCP IP of the FlashBlade.
+In order to authenticate to a FlashBlade using the ZTP tool, you will need the DHCP IP of the FlashBlade.
 
 To begin you will can either query the FlashBlade to obtain the API versions and auto generate the API url for the "Array API URL" field or you can manually enter the API url in the "Array API URL" field.  If you manually enter the API URL you must include the version and have the format as http or ```https://<fqdn or ip of array>/api/<api version>```
 
@@ -66,11 +66,11 @@ For MacOS, download the appropriate ZTP binary, open terminal, set the binary to
 
 FlashArray
 
-![Blank Tab for Flash Array](assets/FA.PNG)
+![Blank Tab for FlashArray](assets/FA.PNG)
 
 FlashBlade
 
-![Blank Tab for Flash Blade](assets/FB.PNG)
+![Blank Tab for FlashBlade](assets/FB.PNG)
 
 ## Built With
 
