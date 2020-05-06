@@ -1,8 +1,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![CLA assistant](https://cla-assistant.io/readme/badge/PureStorage-OpenConnect/zero-touch-provisioner)](https://cla-assistant.io/PureStorage-OpenConnect/zero-touch-provisioner)
 
-# FlashArray and FlashBlade Zero Touch Provisioners
+# FlashArray and FlashBlade Zero Touch Provisioner
 
-Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lighweight application allows engineers to remotely initialize a new FA or FB using this cross-platform console application.
+Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lightweight application allows engineers (or customers) to remotely initialize a new FA or FB using this cross-platform utility.
 
 ## Getting Started
 
