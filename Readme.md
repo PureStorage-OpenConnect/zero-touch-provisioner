@@ -117,16 +117,6 @@ When the above is successful you are ready to move to Step 2 - Step 9 in success
 
 [![Video Tutorial](assets/ZTP_HowTo_First_Frame.png)](https://youtu.be/LN13cpuA3Jc)
 
-## Screen Shots
-
-FlashArray
-
-![Blank Tab for FlashArray](assets/FA.PNG)
-
-FlashBlade
-
-![Blank Tab for FlashBlade](assets/FB.PNG)
-
 ## Built With
 
 * [UI](https://github.com/andlabs/ui/) - The GUI framework used
