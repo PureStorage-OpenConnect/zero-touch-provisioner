@@ -4,6 +4,75 @@
 
 Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lightweight application allows engineers (or customers) to remotely initialize a new FA or FB using this cross-platform utility.
 
+## Prerequisites and Requirements
+
+#### FlashArray
+
+##### Physical Installation of the FlashArray
+The FlashArray remote deployment feature is available in Purity versions **5.2.4** and higher.
+
+A new FlashArray pre-installed with Purity version **5.2.4** or above should be shipped to the customer’s Data Center. When the array is unpacked, if the serial number of the FlashArray and the MAC addresses of the management ports are printed on the array or on a document accompanying the array, this information should be saved. The FlashArray should then be racked and cabled up. See the FlashArray Hardware documentation for details.
+
+##### DHCP Config
+Ensure that DHCP Services available on the network connected to the managment ct0.eth0 and ct1.eth0 ports of the FlashArray.  Once the Flash Array boots up for the first time it will obtain DHCP IP's for both of these ports.  **You will use the ct1.eth0 DHCP IP address in the Zero Touch Provisioner tool**.
+
+Optional step: For convenience, the DHCP server can be configured to assign specific IP addresses to the management ports on the FlashArray, based on the MAC address information that was found when unpacking the FlashArray. The advantage of using MAC-based IP address reservations in a DHCP server is that you don't have to search through the whole range of IP addresses in the DHCP server's IP pool to find the IP address of the FlashArray.
+
+#### FlashBlade
+
+##### FlashBlade Hardware Requirements
+Only multi-chassis FlashBlade systems, or single-chassis FlashBlade systems equipped with EFM-310 are supported. EFM-110 models do not have the required out-of-band ports.
+
+##### FlashBlade Software Requirements
+Flashblade must be upgraded to a version supporting ZTP. For GA this is 3.0.0 or later. ZTP is supported for Service Now as a DA release in 2.4.d.
+
+##### Data Center IT Environment Requirements
+The data center IT environment requirements includes:
+
+* Uplinks and out-of-band ports on the FlashBlade controllers are connected to the network.
+
+* The DHCP server or relay agent is accessible by untagged broadcast from the out-of-band port (the top of rack switch may convert this traffic however the customer needs).
+
+* The DHCP server must provide the following information:
+
+  * IP address
+  * subnet-mask
+  * gateway (routers)
+
+* It is recommended that the DHCP server be configured to register DHCP client addresses to a DNS server.  REST commands can then be directed at the FlashBlade using its advertised hostname, PS-FB-<component serial>-<component name>, that is registered with the DNS server.
+
+* *Optional The FlashBlade will advertise a vendor-class-identifier of “Pure Storage | Flash Blade". This information can be used by the DHCP server to partition a separate address range specifically for FlashBlades that are in ZTP setup mode.
+
+##### ZTP Preparation (fbsetup --ztp)
+When preparing for ZTP, the **fbsetup** wizard must be run in **--ztp** mode to perform the initial configuration and activate the ZTP setup mode. This must occur after upgrading the Flashblade to a release capable of ZTP. Otherwise installation steps are identical to normal. This initial configuration consists of the following:
+
+* Confirm the auto-detected number of blades for bootstrap.
+* Change the ir user password.
+* Confirm to restart the system.
+
+##### Retrieve Hostname / Check ZTP Status
+The ZTP status can be manually checked using **fbdiag ztp-setup**
+
+This command will show the ZTP status as well as the DHCP IPs and Hostnames for each entry point if available.
+
+#### Client Requirements
+
+Windows 10 or higher, Linux with UI, or MAC OS.
+
+Network Connectivity over port 80 and 443 to the DHCP IP used by the FlashArray or FlashBlade
+
+```
+For Windows, download and launch the appropriate .exe, fill out the form and go.
+```
+
+```
+For Linux, (desktop GUI is required) download and launch appropriate ZTP binary, set it to executable "chmod +x", execute it and fill out the form.
+```
+
+```
+For MacOS, download the appropriate ZTP binary, open terminal, set the binary to executable "chmod +x", execute it and fill out the form.
+```
+
 ## Getting Started
 
 Compiled binaries for Mac, Linux, and Windows are located in the Compiled directory.
@@ -43,22 +112,6 @@ When you have the API url in place, clicking the "Create Session" button should 
 ![Create Session logs into the array using the api-token and gets a session token called x-auth-token](assets/FBCreateSession.PNG)
 
 When the above is successful you are ready to move to Step 2 - Step 9 in succession.
-
-### Prerequisites
-
-Windows 10 or higher, Linux with UI, or MAC OS.
-
-```
-For Windows, download and launch the appropriate .exe, fill out the form and go.
-```
-
-```
-For Linux, (desktop GUI is required) download and launch appropriate ZTP binary, set it to executable "chmod +x", execute it and fill out the form.
-```
-
-```
-For MacOS, download the appropriate ZTP binary, open terminal, set the binary to executable "chmod +x", execute it and fill out the form.
-```
 
 ## Video Tutorial
 
