@@ -59,7 +59,8 @@ This command will show the ZTP status as well as the DHCP IPs and Hostnames for 
 
 Windows 10 or higher, Linux with UI, or MAC OS.
 
-Network Connectivity over port 80 and 443 to the DHCP IP used by the FlashArray or FlashBlade
+Network Connectivity over port **8081** to the DHCP IP used by the FlashArray
+Network Connectivity over port **80 and 443** to the DHCP IP used by the FlashBlade
 
 ```
 For Windows, download and launch the appropriate .exe, fill out the form and go.
