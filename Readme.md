@@ -4,13 +4,19 @@
 
 Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lightweight application allows engineers (or customers) to remotely initialize a new FA or FB using this cross-platform utility.
 
+[FlashArray ZTP Support Article](https://support.purestorage.com/FlashArray/Getting_Started_with_FlashArray/FlashArray_Zero_Touch_Provisioning)
+
+[FlashBlade ZTP Support Article](https://support.purestorage.com/FlashBlade/FlashBlade_KB_Internal_Staging/FlashBlade_Zero_Touch_Provisioning_-_Installation)
+
 ## Prerequisites and Requirements
 
 #### FlashArray
 
 ##### Physical Installation of the FlashArray
 The FlashArray remote deployment feature is available in Purity versions **5.2.4** and higher.
-At the moment, the FlashArray is required to have **internet connectivity** due to the fact that one of the steps in the provisioning process checks for remote assist connectivity to Pure1.  If internet connectivity is not available, ZTP initialization will begin but provisioning will eventually fail.  ZTP is currently not support on Dark Sites.
+At the moment, the FlashArray is required to have **internet connectivity** due to the fact that one of the steps in the provisioning process checks for remote assist connectivity to Pure1.  
+
+**If internet connectivity is not available, ZTP initialization will begin but provisioning will eventually fail.  ZTP is currently not support on Dark Sites.**
 
 A new FlashArray pre-installed with Purity version **5.2.4** or above should be shipped to the customer’s Data Center. When the array is unpacked, if the serial number of the FlashArray and the MAC addresses of the management ports are printed on the array or on a document accompanying the array, this information should be saved. The FlashArray should then be racked and cabled up. See the FlashArray Hardware documentation for details.
 
