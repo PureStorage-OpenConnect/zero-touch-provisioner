@@ -135,7 +135,7 @@ When the above is successful you are ready to move to Step 2 - Step 9 in success
 
 ## Authors
 
-* **Brandon Showers* - - [GIBLAB](https://gitlab.com/btshowers)  OR  [About Me](https://bshowers.com)
+* **Brandon Showers* - - [GITLAB](https://gitlab.com/btshowers)  OR  [About Me](https://bshowers.com)
 
 
 ## Acknowledgments
