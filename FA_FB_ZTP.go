@@ -303,6 +303,28 @@ func initializeFATab() ui.Control {
 	entryForm6.Append("Subnet Mask", ct1SNM, false)
 	entryForm6.Append("Default Gateway", ct1GW, false)
 
+	//IPv6 Help Section//
+	group7 := ui.NewGroup("IPv6 Instructions")
+	group7.SetMargined(true)
+	vbox.Append(group7, false)
+	entryForm7 := ui.NewForm()
+	entryForm7.SetPadded(true)
+	group7.SetChild(entryForm7)
+	helpButton := ui.NewButton("IPv6 Help")
+	helpButton.OnClicked(func(*ui.Button) {
+		ui.MsgBox(mainwin,
+			"If using IPv6 please note the format details for each field.",
+			`IP Address: In the format of xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx
+
+			Subnet Mask: Prefix for the IP address from 0 - 128.
+
+			Default Gateway: IP address plus prefix in the format xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx
+
+			Note: Consecutive fields of zeros can be shortened by replacing the zeros with a double colon (::)`)
+	})
+	entryForm7.Append("", helpButton, false)
+
+	//vertical seperator line
 	hbox.Append(ui.NewVerticalSeparator(), false)
 
 	//third column
@@ -377,57 +399,57 @@ func initializeFATab() ui.Control {
 		}
 
 		//validate Controller 1 Gateway
-		err7 := validate.Var(ct1GW.Text(), "required,ipv4")
+		err7 := validate.Var(ct1GW.Text(), "required,ipv4|cidrv6")
 		if err7 != nil {
-			initResult.SetText("Please provide a valid Gateway for Controller 1")
+			initResult.SetText("Please provide a valid ipv4 or ipv6 Gateway address for Controller 1.\n\nFor IPv4, specify the gateway IP address in the form ddd.ddd.ddd.ddd.\nFor IPv6, specify the gateway IP address and prefix in the form xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx.  Notice the prefix appended.\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double colon (::).")
 			passed = false
 		}
 		//validate Controller 1 SN
-		err8 := validate.Var(ct1SNM.Text(), "required,ipv4")
+		err8 := validate.Var(ct1SNM.Text(), "required,ipv4|numeric")
 		if err8 != nil {
-			initResult.SetText("Please provide a valid Subnet Mask for Controller 1")
+			initResult.SetText("Please provide a valid Subnet Mask (or prefix length 0-128 for ipv6) for Controller 1.\n\nFor IPv4 enter the subnet mask in the form ddd.ddd.ddd.ddd. For example, 255.255.255.0.\nFor IPv6 specify the prefix length from 0 to 128. For example, 64.")
 			passed = false
 		}
 		//validate Controller 1 IP
-		err9 := validate.Var(ct1IP.Text(), "required,ipv4")
+		err9 := validate.Var(ct1IP.Text(), "required,ip")
 		if err9 != nil {
-			initResult.SetText("Please provide a valid IP Address for Controller 1")
+			initResult.SetText("Please provide a valid ipv4 or ipv6 IP address for Controller 1.\n\nFor IPv4, enter the address in the form ddd.ddd.ddd.ddd.\nFor IPv6, enter the address in the form xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx. The prefix length (0-128) should be set through the Subnet Mask field.\nConsecutive fields of zeros can be shortened by replacing the zeros with a double colon (::).")
 			passed = false
 		}
 		//validate Controller 0 Gateway
-		err10 := validate.Var(ct0GW.Text(), "required,ipv4")
+		err10 := validate.Var(ct0GW.Text(), "required,ipv4|cidrv6")
 		if err10 != nil {
-			initResult.SetText("Please provide a valid Gateway for Controller 0")
+			initResult.SetText("Please provide a valid ipv4 or ipv6 Gateway address for Controller 0.\n\nFor IPv4, specify the gateway IP address in the form ddd.ddd.ddd.ddd.\nFor IPv6, specify the gateway IP address and prefix in the form xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx.  Notice the prefix appended.\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double colon (::).")
 			passed = false
 		}
 		//validate Controller 0 SN
-		err11 := validate.Var(ct0SNM.Text(), "required,ipv4")
+		err11 := validate.Var(ct0SNM.Text(), "required,ipv4|numeric")
 		if err11 != nil {
-			initResult.SetText("Please provide a valid Subnet Mask for Controller 0")
+			initResult.SetText("Please provide a valid Subnet Mask (or prefix length 0-128 for ipv6) for Controller 0.\n\nFor IPv4 enter the subnet mask in the form ddd.ddd.ddd.ddd. For example, 255.255.255.0.\nFor IPv6 specify the prefix length from 0 to 128. For example, 64.")
 			passed = false
 		}
 		//validate Controller 0 IP
-		err12 := validate.Var(ct0IP.Text(), "required,ipv4")
+		err12 := validate.Var(ct0IP.Text(), "required,ip")
 		if err12 != nil {
-			initResult.SetText("Please provide a valid IP Address for Controller 0")
+			initResult.SetText("Please provide a valid ipv4 or ipv6 IP address for Controller 0.\n\nFor IPv4, enter the address in the form ddd.ddd.ddd.ddd.\nFor IPv6, enter the address in the form xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx. The prefix length (0-128) should be set through the Subnet Mask field.\nConsecutive fields of zeros can be shortened by replacing the zeros with a double colon (::).")
 			passed = false
 		}
 		//validate Virtual 0 Gateway
-		err13 := validate.Var(vir0GW.Text(), "required,ipv4")
+		err13 := validate.Var(vir0GW.Text(), "required,ipv4|cidrv6")
 		if err13 != nil {
-			initResult.SetText("Please provide a valid Gateway for Virtual 0")
+			initResult.SetText("Please provide a valid ipv4 or ipv6 Gateway address for Virtual 0.\n\nFor IPv4, specify the gateway IP address in the form ddd.ddd.ddd.ddd.\nFor IPv6, specify the gateway IP address and prefix in the form xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx/xxx.  Notice the prefix appended.\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double colon (::).")
 			passed = false
 		}
 		//validate Virtual 0 SN
-		err14 := validate.Var(vir0SNM.Text(), "required,ipv4")
+		err14 := validate.Var(vir0SNM.Text(), "required,ipv4|numeric")
 		if err14 != nil {
-			initResult.SetText("Please provide a valid Subnet Mask for Virtual 0")
+			initResult.SetText("Please provide a valid Subnet Mask (or prefix length 0-128 for ipv6) for Virtual 0.\n\nFor IPv4 enter the subnet mask in the form ddd.ddd.ddd.ddd. For example, 255.255.255.0.\nFor IPv6 specify the prefix length from 0 to 128. For example, 64.")
 			passed = false
 		}
 		//validate Virtual 0 IP
-		err15 := validate.Var(vir0IP.Text(), "required,ipv4")
+		err15 := validate.Var(vir0IP.Text(), "required,ip")
 		if err15 != nil {
-			initResult.SetText("Please provide a valid IP Address for Virtual 0")
+			initResult.SetText("Please provide a valid ipv4 or ipv6 IP address for Virtual 0.\n\nFor IPv4, enter the address in the form ddd.ddd.ddd.ddd.\nFor IPv6, enter the address in the form xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx. The prefix length (0-128) should be set through the Subnet Mask field.\nConsecutive fields of zeros can be shortened by replacing the zeros with a double colon (::).")
 			passed = false
 		}
 		//validate SMTP Relay Host
@@ -762,8 +784,8 @@ func initializeFBTab() ui.Control {
 	apiUrlForm := ui.NewEntry()
 	managementIP := ui.NewEntry()
 	//TESTING ONLY//
-	// apiUrlForm.SetText("https://pureapisim.azurewebsites.net/api/1.8.1")
-	// apiToken.SetText("2PDoD5iaokKDwGh9uNqt1jpDTNpgshfiOzO643z5ch92Mwycl7veBA==")
+	//apiUrlForm.SetText("https://pureapisim.azurewebsites.net/api/1.8.1")
+	//apiToken.SetText("PUREUSER")
 	//END TESTING ONLY//
 	//append variables to form
 	loginForm.Append("Array API URL", apiUrlForm, false)
@@ -1225,7 +1247,7 @@ func initializeFBTab() ui.Control {
 		arrayGroup.Hide()
 		loginGroup.Hide()
 		lagGroupDelete.Hide()
-		initResult.SetText("Step 4.\n\nPlease provide the Gateway IP for this Array as well as the Subnet Prefix in the format of x.x.x.x/x. e.g. 10.1.1.0/24.  You must also choose whether the managment network is in-band our out-of-band.\n\nThe Subnet Name and VLAN are pre-populated for you as the most common names.  You can change but make sure you have a reason for doing so.\n\nYou can also Query the array before and after to see the status of this section.")
+		initResult.SetText("Step 4.\n\nPlease provide the Gateway IP for this Array as well as the Subnet Prefix in the format of x.x.x.x/x. e.g. 10.1.1.0/24.\nFor IPv6, specify the gateway IP address in the form xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx/xxx.\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double (::)\n\nYou must also choose whether the managment network is in-band our out-of-band.\n\nThe Subnet Name and VLAN are pre-populated for you as the most common names.  You can change but make sure you have a reason for doing so.\n\nYou can also Query the array before and after to see the status of this section.")
 
 	})
 
@@ -1245,7 +1267,7 @@ func initializeFBTab() ui.Control {
 		arrayGroup.Hide()
 		loginGroup.Hide()
 		lagGroupDelete.Hide()
-		initResult.SetText("Step 5.\n\nProvide the individual IP address for the Virtual 0 Nic, FM1 NIC and FM2 NIC.\n\nNOTE. THIS PROCESS TAKES UP TO A MINUTE TO COMPLETE so don't panic. (even if the app says Not Responding.).\n\nYou can Query the array before and after to see the status of this section.")
+		initResult.SetText("Step 5.\n\nProvide the individual IP address for the Virtual 0 Nic, FM1 NIC and FM2 NIC.\nIPv4 or IPv6 supported.\n\nNOTE. THIS PROCESS TAKES UP TO A MINUTE TO COMPLETE so don't panic. (even if the app says Not Responding.).\n\nYou can Query the array before and after to see the status of this section.")
 
 	})
 
@@ -1738,14 +1760,14 @@ func initializeFBTab() ui.Control {
 			initResult.SetText("Please provide a valid vlanID")
 			passed = false
 		}
-		err2 := validate.Var(subnetGateway.Text(), "ip")
+		err2 := validate.Var(subnetGateway.Text(), "ipv4|cidrv6")
 		if err2 != nil {
-			initResult.SetText("Please provide a valid gateway IP")
+			initResult.SetText(`Please provide a valid gateway IP.\\n\nFor IPv4, specify the gateway IP address in the form ddd.ddd.ddd.ddd.\n\nFor IPv6, specify the gateway IP address in the form xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx/xxx.\n\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double (::)`)
 			passed = false
 		}
 		err4 := validate.Var(subnetPrefix.Text(), "cidr")
 		if err4 != nil {
-			initResult.SetText("Please provide the Prefix")
+			initResult.SetText(`Please provide the Prefix\n\nSpecify the the subnet prefix and prefix length.\n\nFor IPv4, specify the prefix IP address in the form ddd.ddd.ddd.ddd/dd.\n\nFor IPv6, specify the prefix IP address in the form xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx/xxx.\n\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double (::)`)
 			passed = false
 		}
 		err5 := validate.Var(subnetName.Text(), "required")
@@ -1841,14 +1863,14 @@ func initializeFBTab() ui.Control {
 			initResult.SetText("Please provide a valid vlanID")
 			passed = false
 		}
-		err2 := validate.Var(subnetGateway.Text(), "ip")
+		err2 := validate.Var(subnetGateway.Text(), "ipv4|cidrv6")
 		if err2 != nil {
-			initResult.SetText("Please provide a valid gateway IP")
+			initResult.SetText(`Please provide a valid gateway IP\n\nFor IPv4, specify the gateway IP address in the form ddd.ddd.ddd.ddd.\n\nFor IPv6, specify the gateway IP address in the form xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx/xxx.\n\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double (::)`)
 			passed = false
 		}
-		err4 := validate.Var(subnetPrefix.Text(), "required")
+		err4 := validate.Var(subnetPrefix.Text(), "cidr")
 		if err4 != nil {
-			initResult.SetText("Please provide the Prefix")
+			initResult.SetText(`Please provide the Prefix\n\nSpecify the the subnet prefix and prefix length.\n\nFor IPv4, specify the prefix IP address in the form ddd.ddd.ddd.ddd/dd.\n\nFor IPv6, specify the prefix IP address in the form xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx.xxxx/xxx.\n\nWhen specifying an IPv6 address, consecutive fields of zeros can be shortened by replacing the zeros with a double (::)`)
 			passed = false
 		}
 		err5 := validate.Var(subnetName.Text(), "required")

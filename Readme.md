@@ -8,6 +8,9 @@ Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lightweight 
 
 [FlashBlade ZTP Support Article](https://support.purestorage.com/FlashBlade/FlashBlade_KB_Internal_Staging/FlashBlade_Zero_Touch_Provisioning_-_Installation)
 
+## New Features
+* IPv6 Is now supported from within the ZTP tool to configure FlashArray or FlashBlade. (Note: IPv4 via DHCP is still required for the initial connection to the array.)
+
 ## Prerequisites and Requirements
 
 #### FlashArray
@@ -22,6 +25,8 @@ A new FlashArray pre-installed with Purity version **5.2.4** or above should be 
 
 ##### DHCP Config
 Ensure that DHCP Services available on the network connected to the managment ct0.eth0 and ct1.eth0 ports of the FlashArray.  Once the Flash Array boots up for the first time it will obtain DHCP IP's for both of these ports.  **You will use the ct1.eth0 DHCP IP address in the Zero Touch Provisioner tool**.
+
+Only IPv4 DHCP IP addresses are supported.
 
 Optional step: For convenience, the DHCP server can be configured to assign specific IP addresses to the management ports on the FlashArray, based on the MAC address information that was found when unpacking the FlashArray. The advantage of using MAC-based IP address reservations in a DHCP server is that you don't have to search through the whole range of IP addresses in the DHCP server's IP pool to find the IP address of the FlashArray.
 
@@ -42,7 +47,7 @@ The data center IT environment requirements includes:
 
 * The DHCP server must provide the following information:
 
-  * IP address
+  * IPv4 address
   * subnet-mask
   * gateway (routers)
 
