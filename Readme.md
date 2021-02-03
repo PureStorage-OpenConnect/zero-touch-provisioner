@@ -15,13 +15,13 @@ Pure Storage FlashArray and FlashBlade Zero Touch Provisioner. This lightweight 
 
 #### FlashArray
 
+##### Purity Version Requirements
+The FlashArray remote deployment feature is available in Purity versions **5.2.4** and higher if the Array is connected to the internet and can reach Pure1.
+
+If the array will NOT connect to Pure1 over the internet, Purity **5.3.9** or higher is required.  Purity 5.3.9 includes an update that resolves the initialization failure caused if the FlashArray can not complete connectivity tests to Pure1.  **5.3.9 is required for Dark Sites.**
+
 ##### Physical Installation of the FlashArray
-The FlashArray remote deployment feature is available in Purity versions **5.2.4** and higher.
-At the moment, the FlashArray is required to have **internet connectivity** due to the fact that one of the steps in the provisioning process checks for remote assist connectivity to Pure1.  
-
-**If internet connectivity is not available, ZTP initialization will begin but provisioning will eventually fail.  ZTP is currently not support on Dark Sites.**
-
-A new FlashArray pre-installed with Purity version **5.2.4** or above should be shipped to the customer’s Data Center. When the array is unpacked, if the serial number of the FlashArray and the MAC addresses of the management ports are printed on the array or on a document accompanying the array, this information should be saved. The FlashArray should then be racked and cabled up. See the FlashArray Hardware documentation for details.
+A new FlashArray pre-installed with Purity version **5.2.4** or higher should be shipped to the customer’s Data Center. When the array is unpacked, the serial number of the FlashArray and the MAC addresses of the management ports are printed on the array and on a build document accompanying the array, this information should be saved. The FlashArray should then be racked and cabled up. See the FlashArray Hardware documentation for details.
 
 ##### DHCP Config
 Ensure that DHCP Services available on the network connected to the managment ct0.eth0 and ct1.eth0 ports of the FlashArray.  Once the Flash Array boots up for the first time it will obtain DHCP IP's for both of these ports.  **You will use the ct1.eth0 DHCP IP address in the Zero Touch Provisioner tool**.
